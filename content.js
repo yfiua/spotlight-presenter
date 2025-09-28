@@ -18,9 +18,11 @@
 
   function showSpotlight() {
     overlay.classList.add('active');
+    document.body.classList.add('spotlight-hide-cursor');
   }
   function hideSpotlight() {
     overlay.classList.remove('active');
+    document.body.classList.remove('spotlight-hide-cursor');
   }
 
   function onMouseDown(e) {
