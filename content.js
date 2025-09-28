@@ -1,24 +1,35 @@
 // Spotlight content script
 (function () {
-  // create overlay element
+  let spotlightEnabled = true;
+
+  // sync with storage
+  chrome.storage.local.get({ enabled: true }, (data) => {
+    spotlightEnabled = data.enabled;
+  });
+
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === "local" && changes.enabled) {
+      spotlightEnabled = changes.enabled.newValue;
+    }
+  });
+
   const overlay = document.createElement('div');
   overlay.className = 'spotlight-overlay';
   overlay.setAttribute('aria-hidden', 'true');
   document.documentElement.appendChild(overlay);
 
   let rightDown = false;
-  let lastClientX = 0;
-  let lastClientY = 0;
 
-  // update spotlight position using CSS variables for high performance
   function updatePosition(x, y) {
     overlay.style.setProperty('--x', x + 'px');
     overlay.style.setProperty('--y', y + 'px');
   }
 
   function showSpotlight() {
-    overlay.classList.add('active');
-    document.body.classList.add('spotlight-hide-cursor');
+    if (spotlightEnabled) {
+      document.body.classList.add('spotlight-hide-cursor');
+      overlay.classList.add('active');
+    }
   }
   function hideSpotlight() {
     overlay.classList.remove('active');
@@ -26,12 +37,11 @@
   }
 
   function onMouseDown(e) {
+    if (!spotlightEnabled) return;
     if (e.button === 2) {
       rightDown = true;
       e.preventDefault();
-      lastClientX = e.clientX;
-      lastClientY = e.clientY;
-      updatePosition(lastClientX, lastClientY);
+      updatePosition(e.clientX, e.clientY);
       showSpotlight();
       document.addEventListener('mousemove', onMouseMove, {capture: true});
     }
@@ -46,15 +56,11 @@
   }
 
   function onMouseMove(e) {
-    lastClientX = e.clientX;
-    lastClientY = e.clientY;
-    updatePosition(lastClientX, lastClientY);
+    updatePosition(e.clientX, e.clientY);
   }
 
   function onContextMenu(e) {
-    if (rightDown) {
-      e.preventDefault();
-    }
+    if (rightDown) e.preventDefault();
   }
 
   function onBlur() {
