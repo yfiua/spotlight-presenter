@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Spotlight Presenter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Hold right mouse button to create a spotlight around the cursor.",
   "icons": {
     "16": "icon16.png",

@@ -70,15 +70,6 @@
   document.addEventListener('contextmenu', onContextMenu, {capture: true});
   window.addEventListener('blur', onBlur);
 
-  window.addEventListener('unload', () => {
-    document.removeEventListener('mousedown', onMouseDown, {capture: true});
-    document.removeEventListener('mouseup', onMouseUp, {capture: true});
-    document.removeEventListener('contextmenu', onContextMenu, {capture: true});
-    document.removeEventListener('mousemove', onMouseMove, {capture: true});
-    window.removeEventListener('blur', onBlur);
-    overlay.remove();
-  });
-
   document.addEventListener('mousemove', (e) => {
     updatePosition(e.clientX, e.clientY);
   }, {passive: true});
