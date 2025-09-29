@@ -28,3 +28,5 @@ Optionally, you can disable/enable the extension through the popup menu.
 - **Release Right Mouse Button** → Turns spotlight off.  
 - **Click Extension Icon** → Open popup to enable/disable spotlight entirely.  
 
+The extension also works beautifully with **PDF presentations rendered as HTML** (e.g., using [PDF.js viewer](https://mozilla.github.io/pdf.js/)).  
+This makes it great for **lectures, conference talks, or online teaching**, where you want to highlight content directly inside the browser.
