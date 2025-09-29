@@ -1,7 +1,7 @@
 # Spotlight Presenter
-Browser extension for creating a **spotlight effect** around your mouse cursor, ideal for presentations and screen sharing.
-Hold down the **right mouse button** to enable the spotlight, and release it to disable.  
-Optionally, you can disable/enable the extension through the popup menu.
+Browser extension for creating a **spotlight effect** around your mouse cursor, ideal for presentations and screen sharing, where you want to highlight content directly inside the browser.
+
+Hold down the **right mouse button** to enable the spotlight, and release it to disable. Optionally, you can disable/enable the extension through the popup menu.
 
 ---
 
@@ -28,5 +28,4 @@ Optionally, you can disable/enable the extension through the popup menu.
 - **Release Right Mouse Button** → Turns spotlight off.  
 - **Click Extension Icon** → Open popup to enable/disable spotlight entirely.  
 
-The extension also works beautifully with **PDF presentations rendered as HTML** (e.g., using [PDF.js viewer](https://mozilla.github.io/pdf.js/)).  
-This makes it great for **lectures, conference talks, or online teaching**, where you want to highlight content directly inside the browser.
+The extension also works beautifully with **PDF presentations** rendered as HTML (e.g., using [PDF.js viewer](https://mozilla.github.io/pdf.js/web/viewer.html)).  
